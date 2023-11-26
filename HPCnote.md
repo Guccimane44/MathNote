@@ -27,7 +27,7 @@ Using ML to learn from simulations and produce learned surrogates for the simula
 The interaction between models and simulation data occurs in two directions: 
 1) How to use multi-modal data (data in various forms, like text, images, or audio) to inform complex models in the presence of uncertainty. In simple terms: we have lots of data in various forms but we might not be sure how useful they can be. How can we use those data in the model? (how to use the acquired data?)
 2) How, where, when, and from which source to acquire simulation data to optimally inform models with respect to a particular goal or goals is fundamentally an optimal experimental design problem. (how to acquire the proper data)
-Therefore we have the urge to distinguish different modes and mechanics of how learning is integrated with HPC simulations. In other words, we need to distinguish different interactions of learning and HPC.
+Therefore we have the urge to distinguish different modes and mechanics of how learning is integrated with HPC simulations. In other words, we need to distinguish different interactions of learning and HPC. The three primary modes and mechanisms for integrating learning with HPC simulations are:
 ##### Substitution
 A surrogate model is used to substitute an essential element of the original simulation (method). The surrogate model is used to create multi-scale or coarse-grained surrogate modeling, which could either learn the structure or theory of the original simulation. For example: Using a trained Neural Network from the original simulation can reduce the cost significantly compared to running it in the original simulation. 
 
