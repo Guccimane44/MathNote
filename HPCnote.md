@@ -9,6 +9,7 @@
 ### Motivation
 The HPC communities have previously mistakenly assumed that as long as performance gains from hardware are possible, traditional simulation-based methods will continue to provide increased scientific insight. This insight has been challenged at the current time when we can foresee the obsolescence of Moore's law. It is urgent to examine the methodological efficiency otherwise we may be reaching limits of both hardware and methodological performance gains.
 ### Learning Everywhere: application fields
+
 ##### ML around HPC:
 Using ML to learn from simulations and produce learned surrogates for the simulations. This increases effective performance for strong scaling.
 * Learning Outputs from Inputs: Use performed simulation to directly train an AI system.
@@ -27,7 +28,7 @@ The interaction between models and simulation data occurs in two directions:
 1) How to use multi-modal data (data in various forms, like text, images, or audio) to inform complex models in the presence of uncertainty. In simple terms: we have lots of data in various forms but we might not be sure how useful they can be. How can we use those data in the model? (how to use the acquired data?)
 2) How, where, when, and from which source to acquire simulation data to optimally inform models with respect to a particular goal or goals is fundamentally an optimal experimental design problem. (how to acquire the proper data)
 Therefore we have the urge to distinguish different modes and mechanics of how learning is integrated with HPC simulations. In other words, we need to distinguish different interactions of learning and HPC.
-###### Substitution
+##### Substitution
 A surrogate model is used to substitute an essential element of the original simulation (method). The surrogate model is used to create multi-scale or coarse-grained surrogate modeling, which could either learn the structure or theory of the original simulation. For example: Using a trained Neural Network from the original simulation can reduce the cost significantly compared to running it in the original simulation. 
 
 
