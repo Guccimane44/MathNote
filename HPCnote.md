@@ -9,7 +9,7 @@
 * __Simulation approach versus MLaroundHPC approach__:Traditional Simulation approach relies on designing an excellent model, while the ML approach focuses on the learning patterns acquired from data for predictions or classifications.  
 
 ## Motivation
-The HPC communities have previously mistakenly assumed that as long as performance gains from hardware are possible, traditional simulation-based methods will continue to provide increased scientific insight. This insight has been challenged at the current time when we can foresee the obsolescence of Moore's law. It is urgent to examine the methodological efficiency otherwise we may be reaching limits of both hardware and methodological performance gains.
+The HPC communities have previously mistakenly assumed that as long as performance gains from hardware are possible, traditional simulation-based methods will continue to provide increased scientific insight. This insight has been challenged at the current time when we can foresee the obsolescence of Moore's law and Dennard scaling. It is urgent to examine the methodological efficiency otherwise we may be reaching limits of both hardware and methodological performance gains.
 
 Therefore this paper will explain the underlying opportunities between high-performance simulations and machine learning. It attempts to answer questions such as: How and where can ML effectively enhance HPC simulations? When should ML methods substitute traditional simulations? which ML methods are promising? What are the general motifs or patterns of interaction between ML and HPC?
 ## Learning Everywhere: application fields
@@ -49,9 +49,13 @@ Firstly, universal ML methods(off-the-shelf) are not the answer, since they most
 3. __Main Problem of a Project:__ How to understand which learning methods work. why and for which problems? How do we develop benchmarks? Furthermore, how do we develop proxy apps to represent the applications?
 4. __Understanding Performance:__ What are the metrics that represent the performance of machine learning and simulations? How to define those metrics?
 ##### System Software and ML-HPC Runtime Systems:
-The interactions of ML and HPC simulations can be intertwined, so it is important to understand the control and coupling between Learning elements(L), and HPC Simulation (S). In many cases a third general component: experiments or observations (E) may also be needed.
+The interactions of ML and HPC simulations can be intertwined, so it is important to understand the control and coupling between Learning elements(L), and HPC Simulation (S). In many cases, a third general component: experiments or observations (E) may also be needed.
 
-There are some run-time requirements that have to be fulfilled. For example: switching actions depending on data size; Learning algorithms depending on remaining training time; And the need for scaling, since we work on two (possibly three) components; The concurrency of the whole system. Therefore a run-time system and software have to be accordingly developed.  
+There are some run-time requirements that have to be fulfilled. For example: switching actions depending on data size; Learning algorithms depending on remaining training time; And the need for scaling, since we work on two (possibly three) components; The concurrency of the whole system. Therefore a run-time system and software have to be accordingly developed. 
+##### Hardware and Platform Configuration
+* Role and importance of heterogeneous accelerators: (i) Future generations of accelerators might not work perfectly for simulation. (current GPU accelerators are fine with both ML and simulation) (ii) When should RNN need different accelerators from CNN? (the importance of RNN is increasing, but now many accelerators are for CNN)
+* Requirements of fast I/O and accordingly, fast and large disks.
+* latent optimization methods like fog computing.
 
 
 
