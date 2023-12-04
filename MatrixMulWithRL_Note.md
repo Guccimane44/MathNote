@@ -1,5 +1,8 @@
 ## Motivation
-Matrix multiplication algorithms can be formalized as low-rank decompositions of a specific three-dimensional tensor, called the matrix multiplication tensor.
+Matrix multiplication has been known as an NP-hard problem. in a longstanding research effort, matrix multiplication algorithms have been discovered by attacking this tensor decomposition problem using human search, continuous optimization, and combinatorial search. These approaches often rely on human-designed heuristics, which are probably suboptimal. Here the paper will introduce a new approach with deep reinforcement learning for solving the matrix multiplication problem. 
+
+## Algorithm as tensor decomposition
+A matrix multiplication is bilinear, it can be fully represented by a 3D tensor, which can be represented by the outer product of three vectors $__u__ $
 
 ## Terminologies
 ##### Exploration-Exploitation in RL: 
