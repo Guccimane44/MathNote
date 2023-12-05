@@ -1,0 +1,1 @@
+"Mesh-invariant neural networks" would be a concept aiming to develop neural networks that can effectively operate on data represented by different meshes or discretizations. This would be particularly useful in applications where the choice of mesh might vary or where a model needs to generalize across different discretizations of the same underlying problem.
