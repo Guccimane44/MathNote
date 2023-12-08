@@ -1,0 +1,367 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{wrapfig}
+\usepackage{url}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\def\mathbi#1{\textbf{\em#1}}
+
+\begin{document}
+
+\title{ML in Computational Sciences and HPC\\
+}
+\author{\IEEEauthorblockN{Ece \"{O}zt\"{u}rk}
+\IEEEauthorblockA{\textit{Faculty of Mathematics, Computer Science and Statistics} \\
+\textit{Ludwig Maximilian University of Munich}\\
+Munich, Germany \\
+Oeztuerk.Ece@campus.lmu.de}
+\and
+\IEEEauthorblockN{Yan Liu}
+\IEEEauthorblockA{\textit{Faculty of Mathematics, Computer Science and Statistics} \\
+\textit{Ludwig Maximilian University of Munich}\\
+Munich, Germany \\
+Yan.Liu@campus.lmu.de}
+}
+
+\maketitle
+
+\begin{abstract}
+This seminar paper is an introduction for two interrelated subjects: i)Recent data-approach innovations as a solution for traditional
+computationally heavy approaches. ii)Point out the underlying oppotunites and difficulties of the usage of machine learning for HPC.
+\end{abstract}
+
+\begin{IEEEkeywords}
+HPC, machine learning, surrogate, reinforcement learning, PDE solver, matrix multiplication
+\end{IEEEkeywords}
+
+\section{Introduction}
+Old-fashioned simulation-based solutions have confronted challenges as we could foresee the obsolescence of Moore's law \cite{b1} and Dennard scaling. The emergence of machine learning and big data unveils the possibilities of solving traditionally intractable problems by sidestepping. The usage of machine learning can not only solve some computational problems or discover underlying problems more efficiently but will also improve the HPC system's general performance as you can see in the later chapters. In this paper, we will first focus on two computational breakthroughs using machine learning as innovative solutions, namely solving matrix multiplication and PDE. Secondly, we will elaborate on the idea of MLaroundHPC which involves different interactions between machine learning and HPC. First and foremost, lets briefly explain some key concepts and terminologies.
+\begin{itemize}
+\item \textbf{Machine Learning and Deep Learning.} Machine learning is a technology that generates the underlying information ouf of a given big amount of Data without explicit instruction; Deep learning is a machine learning algorithm that uses multiple layers (called neural networks) to extract hiddle features from input data.
+\item \textbf{High Performance Computing.} HPC can perform complex calculations using high speed, and enable the execution of large-scale simulation and computation, which are essential to solve scientific problems.
+\item \textbf{Surrogate Model} also known as a surrogate or metamodel, is a simplified and computationally efficient representation of a more complex and computationally expensive simulation or optimization model. The purpose of using a surrogate model is to approximate the behavior of the original model while significantly reducing the computational cost. As you can see in the later chapter. creating a surrogate model using machine learning is one of the
+typical uses of machine learning.
+\item \textbf{Tensor} is a generalization of matrix and vector. A matrix can be viewed as 2D tensor. Vector can be viewed as 1D tensor. Scalar analogly
+as 0D. 3Dtensor can be considered as a vector of matrices as an entry instead of numbers.
+\item \textbf{Reinforcement Learning} is a type of machine learning that learns the optimal decision of a given environment. An agent, which is a decision maker, will receive a reward or punishment after its decision based on our evaluation. A famous example would be AlphaZero, which beats the top human player in shogi and chess.
+\item In computational physics and numerical simulations, a \textbf{Mesh} is a discretized representation of a physical domain. Each element of the mesh represents a small part of the physical structure.
+\item A \textbf{Campaign} typically refers to a set of coordinated and planned computational tasks or simulations conducted with specific objectives.
+\end{itemize}
+
+\section{Background}
+\subsection{Historical Developments and Approaches in ML around HPC}\label{SCM}
+First of all, examining the historical development of approaches and applications in the fields of machine learning around HPC will allow the subject to be analyzed better. The history can be examined in different ways but we want to focus on significant milestones and evolving methodologies\cite{b2}. Understanding historical developments provides us with a versatile perspective to analyze the reasons for the difficulties and needs that arise over time and how they should be solved.
+\begin{itemize}
+\item \textbf{Early Integration (1950s-1980s):} The first stages of machine learning in HPC were characterized by rudimentary algorithms and limited computational capabilities. Early efforts focused primarily on rule-based systems and symbolic reasoning, with important work by researchers such as Marvin Minsky and John McCarthy.
+\item \textbf{Knowledge-Based Systems (1980s-1990s):} Knowledge-based systems that combine expert knowledge and heuristics are gradually coming to the fore. These systems aimed to capture domain-specific expertise and judgment. The integration of rule-based inference engines and symbolic representations formed the basis for the first applications of artificial intelligence in HPC.
+\item \textbf{Emergence of Neural Networks (1990s):} The increasing trend towards neural networks, supported by advances in computational power and algorithmic innovations, has led to the scientific revolution. Researchers such as Geoffrey Hinton have significantly contributed to the development of deep learning architectures, leading to neural network applications in HPC.
+\item \textbf{Parallel and Distributed Computing (2000s):} The 2000s ushered in a major shift in machine learning with the emergence of parallel and distributed computing on HPC platforms. The increasing availability of clustered computing environments has made training larger and more complex models easier. Parallel algorithms have become widespread and leverage the power of distributed computing resources to train neural networks and ensemble methods.
+\item \textbf{Scalable Machine Learning Frameworks (2010s):} The growing need for big data and the growing trend towards scalable machine learning solutions have led to the development of designs that take advantage of the parallelism inherent in HPC architectures. Apache Hadoop and Spark have emerged as popular platforms that enable efficient processing of large data sets using distributed computing clusters.
+\item \textbf{Accelerated Computing with GPUs (2010s):} The introduction of Graphics Processing Units (GPUs) for machine learning tasks was a major milestone. GPUs designed for parallel processing have proven effective in speeding up training times for deep neural networks. This era has increased the computational efficiency of machine learning algorithms with the emergence of GPU-accelerated libraries such as CUDA.
+\item \textbf{Exascale Computing and ML (2020s and Beyond):} The current era can be summarized as the search for high-level computing capabilities that require unprecedented computing power. Machine learning in hyperscale systems simultaneously poses challenges and opportunities that require the development of algorithms and frameworks optimized for extreme parallelism. Research efforts are focused on addressing scalability, fault tolerance, and energy efficiency in machine learning applications in the context of exascale HPC.
+\item \textbf{Interdisciplinary Collaborations and Domain-Specific ML (Ongoing):} Contemporary developments require interdisciplinary collaborations between domain experts and computer scientists. Machine learning applications tailored to specific scientific fields, such as computational sciences, genomics, and climate modeling, showcase the versatility of machine learning in tackling complex challenges in HPC environments.
+\end{itemize}
+
+\section{Discovering Faster Matrix Multiplication Algorithms With Reinforcement Learning}
+A paper \cite{b3} created an agent \textbf{AlphaTensor} using AlphaZero\cite{b4} and deep reinforcement learning to search for provably correct and efficient matrix multiplication algorithms.
+\subsection{Previous Challenges in Matrix Multiplication}
+High-order matrix multiplication is one of the most frequent and painful computations in science and engineering. Even though matrix multiplications can be formalized as low-rank decompositions of a specific three-dimensional(3D) tensor\cite{b5}, called matrix multiplication tensor. Finding low-rank decompositions of 3D tensors(and beyond) is still NP-hard\cite{b6}and also hard in practice. Previously, matrix multiplication has been often rely on human-designed heuristics, which are probably suboptimal. Here Fawzi and others use deep reinforcement learning to learn and generalize patterns in tensors and use the learned agent to predict efficicent decomposition.
+\subsection{The Idea of AlphaTensor and Formulation}
+We can formulate the matrix multiplication algorithm discovery as a single-player game, called TensorGame. At each step of TensorGame, the
+player selects how to combine different entries of the matrices to multiply. A score will be assigned based on the number of selected operations required to reach the correct multiplication result. In order to find "good" matrix multiplication algorithms, DRL agent AlphaTensor has been developed, which is based on AlphaZero.
+Figure1 demostrates using 3D tensor of the size $ 4\times 4 \times 4$ to represent the multiplication of two $ 2 \times 2$ matrices.\\
+In general, we decompose tensor $ \mathcal{T}_{n,m,p}$ into $\mathbi{R}$ rank-one terms:
+\begin{equation}
+\mathcal{T}_n = \sum_{r=1}^{\mathbi{R}} \mathbf{u}^{\left( r \right)} \otimes
+\mathbf{v}^{\left( r \right)} \otimes \mathbf{w}^{\left( r \right)} \label{eq}
+\end{equation}
+
+where $ \mathbf{u}^{\left( r \right)} $, $\mathbf{v}^{\left( r \right)}$ and $\mathbf{w}^{\left( r \right)}$ are vectors and $\mathbi{R}$ is the upper bound of the rank of $ \mathcal{T}$. we denote $\otimes$ as the outer product. The underlying idea is simple: Tensor with rank $n$ cannot be decomposed into $k < n$ rank 1 matrices. Once we have the decomposition, we can compute matrix multiplications conveniently.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\linewidth]{fig1.png}}
+\caption{ $ 4\times 4 \times 4$ Tensor $\mathcal{T}$ represents the muliplication of two $2 \times 2$ matrics. The purple box means tensor entries equal to 1 and the transparent box means 0. For instance
+$ c_1 = a_1b_1 + a_2b_3$, means $ \left( a_1 , b_1 , c_1 \right) $ and $ \left( a_2 , b_3 , c_1 \right)$ are set to 1.}
+\label{fig}
+\end{figure}
+
+We formalize finding decompositions as a reinforcement learning problem, modeling the environment as a single-player game, TensorGame. The procedure will be described as follows:
+\begin{itemize}
+\item We set our target tensor $\mathcal{T}$to our initial state $\mathcal{S}_{0}$.
+\item In each step t of the game, the player selects a triplet
+$\mathbf{u}^{\left( r \right)},
+\mathbf{v}^{\left( r \right)},
+\mathbf{w}^{\left( r \right)}$ and update the tensor $\mathcal{S}_{t}$ by subtracting the
+tensor we computed from the triplet: $$\mathcal{S}_{t} \leftarrow \mathcal{S}_{t-1} -
+\mathbf{u}^{\left( r \right)}\otimes
+\mathbf{v}^{\left( r \right)}\otimes
+\mathbf{w}^{\left( r \right)} $$
+Our goal is to try to find the smallest step the agent takes to acquire $\mathcal{S}_{t} = 0$, which will satisfy (1). We use $\mathbi{R}$ to limit the maximum computation times.
+\end{itemize}
+\subsection{Optimizations and Performance}
+The whole idea is relatively straightforward. The significance lies in the engineering. A transformer-based\cite{b7} architecture has been developed and deployed. The main part of
+the model comprises a sequence of attention operations, each applied to a set of features belonging to a pair of grids. This generalized axial attention\cite{b8} to multiple grids is more efficient and yields better results than naive self-attention. Apart from architecture, the use of data argumentation and change of basis also has improved the general performance.
+
+
+\section{Fourier Neural Operator For Parametric Partial Differential Equations}
+Just like matrix multiplication, solving partial derivitive equation is one of the most common and intricate problems in science and engineering. A complex traditonal PDE systems, normally require very hign level of discretization, which is extremely time inefficient. A data-driven approach has been proven to be more efficient and accurate than traditional discretizational solvers. Here, we introduce \textbf{Fourier Neural Operator}\cite{b9}, a novel deep learning architecture, which consists mostly of two previous works:
+\begin{itemize}
+\item Recent works of \textbf{Neural Operators}\cite{b10,b11,b12,b13,b14}, enable to transfer solutions between meshes. Moreover, the neural operator needs to be trained only once, which means it has only passed one time through the neural network. Lastly, the neural operator requires no knowledge of the underlying PDE, only data.
+\item \textbf{The Fourier Transform} is frequently used in spectral methods for solving differential equations, since differentiation is equivalent to multiplication in the Fourier domain. Fourier transforms have also played an important role in the development of deep learning. In theory, they appear in the proof of the universal approximation theorem\cite{b15}. Empirically, they have been used to speed up convolutional neural networks\cite{b16}. Recently, some spectral methods for PDEs\cite{b17,b18} have been extended to neural networks. This paper builds on these works by proposing a neural operator architecture defined directly in Fourier space with quasi-linear time complexity and state-of-the-art approximation capabilities.
+
+\end{itemize}
+
+\begin{figure*}[htbp]
+\center{\includegraphics[width=\linewidth]{fig2.png}}
+\caption{ \textbf{(a)The full architecture of neural operator:} start from input a. 1. Lift to a higher dimension channel space by a neural network P. 2. Apply four layers of integral operators and activation functions. 3. Project back to the target dimension by a neural network Q. Output u.\textbf{(b) Fourier layers:} Start from input v. On top: apply the Fourier transform $\mathcal{F}$; a linear transform R on the lower Fourier modes and filters out the higher modes; then apply the inverse Fourier transform $\mathcal{F}^{-1}$. On the bottom: apply a local linear transform W.}
+\label{fig}
+\end{figure*}
+
+\subsection{Formal Problems Formulation}
+The methodology we present here is fairly convensional in machine learning modelling. We
+built a mapping between two infinite dimensional spaces from a finite collection of observed input-output paris. We parameterize the input and train a model to map to the desired output. Thereafter, we define a cost function and minimizer. Detailed formulizations are presented as follows:
+
+Let $D \supset \mathbb{R}^{d}$ be a bounded, open set. Input $\mathcal{A}= \mathcal{A}\left( D;\mathbb{R}^{d_{a}} \right)$ and output $\mathcal{U}= \mathcal{U}\left( D;\mathbb{R}^{d_{u}} \right)$ be separable Banach spaces of function taking values in $\mathbb{R}^{d_{a}}$ and $\mathbb{R}^{d_{u}}$ respectively. We denote $G^{\dagger}:\mathcal{A} \rightarrow \mathcal{U}$ as our desired solution for parametric PDE. Suppose we have observations $\{ a_{j},u_{j} \}_{j=1}^{N} $ where $a_{j} \sim \mu$ is an independent and identically distributed sequence from the probability measure $\mu$ supported on $\mathcal{A}$ and normally $\mu_{j} = G^{\dagger} \left( a_{j} \right)$ will contain noises. Parametric map will be defined as follows:
+\begin{equation}
+G_{\theta}:\mathcal{A} \times \Theta \rightarrow \mathcal{U} \label{eq}
+\end{equation}
+We want to achieve $G \left( \cdot, \theta \right) = G_{\theta^{\dagger}} \approx G^{\dagger} $ by finding the optimal parameter space $\Theta$. And we define the cost function in convensional manner $C:\mathcal{U \times \mathcal{U} \rightarrow \mathbb{R}}$ and also the minimizer:
+\begin{equation}
+\min_{\theta \in \Theta} \mathbb{E}_{a \sim \mu} [ C \left( G \left( a, \theta \right) , G^{\dagger} \left( a \right) \right) ]  
+\label{eq}
+\end{equation}
+
+
+
+\subsection{Neural Operator and Fourier Neural Operator}
+The neural operator, proposed by\cite{b19}, is an iterative learning architecture as presented in Figure2. P and Q are local transformations P which are usually parameterized by a shallow fully connected neural network. Between P and Q there are multiple Fourier layers $v_{t} \mapsto v_{t+1}$which are formal defined below: \\
+\textbf{Definition of Iterative Updates}
+\begin{equation}
+v_{t+1} \left( x \right) : = \sigma \left( W_{v_{t}} \left( x \right) + \left( \mathcal{K} \left( a;\phi \right) v_{t} \right) \left( x \right) \right), \quad \forall x \in D
+\label{eq}
+\end{equation}
+where $\mathcal{K} : \mathcal{A} \times \Theta_{\mathcal{K}} \rightarrow \mathcal{L} \left( \mathcal{U} \left( D;\mathbb{R}^{d_{v}} \right), \mathcal{U} \left( D;\mathbb{R}^{d_{v}} \right) \right) $ maps to bounded linear operators on $\mathcal{U} \left( D;\mathbb{R}^{d_{v}} \right)$ and is parameterized by $\phi \in \Theta_{\mathcal{K}}$. $\mathcal{K}$ is a convolution operator defined in Fourier space, here is the definition: \\
+\textbf{Definition of Fourier Integral Operator $\mathcal{K}$}
+\begin{equation}
+\left( \mathcal{K} \left( a; \phi \right) v_{t} \right) \left( x \right) = \mathcal{F}^{-1} \left( R_{\phi} \cdot \left( \mathcal{F} v_{t} \right) \right) \left( x \right), \quad \forall x \in D
+\label{eq}
+\end{equation}
+where $R_{\phi}$ is the Fourier transform of a periodic function $\mathsf{K} : \overline{D} \rightarrow \mathbb{R}^{d_{v} \times d_{v}}$ parameterized by $\phi \in \Phi_{\mathsf{K}}$. More intuitive demonstration can be found in Figure 2 (b).
+The idea of (5) comes from the original \textbf{Kernel Integral Operator} in (Li et al., 2020b). which is defined in (6):
+\begin{equation}
+\left( \mathcal{K} \left( a;\phi \right) v_{t} \right) \left( x \right) :=
+\int_{D} \mathsf{K} \left( x,y,a \left( x \right), a \left( y \right); \phi \right) v_{t} \left( y \right) dy,
+\label{eq}
+\end{equation}
+for $\forall x \in D$, where $\mathsf{K}: \mathbb{R}^{2 \left( d + d_{a} \right)} \rightarrow \mathbb{R}^{{d_{v} \times d_{v}} }$ is a neural network parameterized by $\phi \in \Theta_{\mathsf{K}}$. In fact (5) can be seen as a optimization of (6) . To see the heuristical intuition of (5), we firstly denote $\mathcal{F}$ as the Fourier transform of a function $ f : D \rightarrow \mathbb{R}^{d_{v}}$ and $\mathcal{F^{-1}}$ as its inverse and
+$$
+\left( \mathcal{F} f \right)_{j} \left( k \right) = \int_{D} f_{j} \left( x \right) e^{-2i\pi \langle x,k \rangle} dx
+\label{eq}
+$$
+$$
+\left( \mathcal{F}^{-1} f \right)_{j} \left( x \right) = \int_{D} f_{j} \left( k \right) e^{-2i\pi \langle x,k \rangle} dk
+\label{eq}
+$$
+for $j = 1,...,d_{v}$ where $i = \sqrt{-1}$ is the imaginary unit.
+By letting $ \mathsf{K} \left( x,y,a \left( x \right), a \left( y \right); \phi \right) = \mathsf{K} \left( x-y ; \phi \right)$, and applying the convolution theorem, we can conclude that
+$$ \left( \mathcal{K} \left( a;\phi \right) v_{t} \right) \left( x \right) = \mathcal{F}^{-1} \left( \mathcal{F} \left( \mathsf{K}_{\phi} \right) \cdot \mathcal{F} \left( v_{t} \right) \right) \left( x \right) $$
+which is our definition in (5).
+
+\subsection{Performance and Contributions}
+The Fourier neural operator is the ground-breaking work that can manage to learn the resolution-invariant solution operator for the family of Navier-Strokes equation in the turbulent regime. Despite that, the Fourier neural operator also outperforms all existing deep learning methods on a relatively large scale even in fixing resolution $64 \times 64$: It achieves error rates that are 30\% lower on Burgers'Equation, 60\% lower on Darcy Flow, and 30\% lower on Navier Stokes, which are the typical PDE scenarios.
+It is also worth mentioning that the Fourier neural operator achieves tremendous robustness. Despite its speed advantage, the method does not suffer from accuracy degradation when used in downstream applications such as solving the Bayesian inverse problem.
+
+\section{MLaroundHPC: Understanding ML driven HPC}
+Hign Performance Computing is essential for supporting machine learning in computation. The HPC communities have previously mistakenly assumed that as long as performance gains from hardware are possible, traditional simulation-based methods will continue to provide increased scientific insight. As we mentioned in the beginning: At the time that hardware progress doesn't seem to be promising in the future, it is necessary to reexamine our methodologies. Here we will deliver the big picture of various interaction and opputunities between machine learning and HPC.
+
+\subsection{Learning Everywhere}
+There are various way to interact ML and HPC. Using ML to learn from simulations and produce learned surrogates for the simulations. This increases effective performance for strong scaling. 
+Here we will outline some common interactions in following four categories\\
+\textbf{MLaroundHPC}
+\begin{itemize}
+\item Learning Outputs from Inputs: Use performed simulation to train an AI system directly\cite{b20,b21}.
+\item Learning Simulation Behavior: Use ML surrogates to learn the system/model behavior. HPC system usually is computationally heavy. Once we have built the ML surrogates, we can apply them to learning the behaviors of the HPC system and model\cite{b22,b23}.
+\item Faster and Accurate PDE Solutions: As we discussed in the previous chapter. Applying ML algorithms to reduce the time costs on high dimensional PDE computations on HPC\cite{b23,b24,b25,b26}.
+\item New approach to Multi-Scale Modelling: Multi-Scale Modelling is a modeling method that uses multiple scales instead of one. The deployment of machine learning can simplify the process of finding potential Multi-Scale.\cite{b27,b28,b29,b30,b31}
+\end{itemize}
+\textbf{ML Control}
+\begin{itemize}
+\item Experiment Control: Using ML to build the simulation surrogates for simulations, when simulations are used in the control of experiments and objective-driven computational campaigns\cite{b33,b34,b35,b36,b37,b38}.
+\item Experiment Design: Model-based design of experiments with new ML assistance can identify the optimal conditions for stimuli and measurements that yield the most information about the system given practical limitations on realistic experiments. In other words, it helps the model design by giving more information about the structures and parameters of ongoing projects\cite{b39}.
+\end{itemize}
+\textbf{ML Auto-Tunning}
+\begin{itemize}
+\item ML can be used for a range of tuning and optimization objectives\cite{b40,b41,b42,b43}.
+\end{itemize}
+\textbf{ML After HPC}
+\begin{itemize}
+\item ML analyzing results of HPC as in trajectory analysis and structure identification in biomolecular simulations\cite{b44}.
+\end{itemize}
+\subsection{ML around HPC Classification and Exemplars}
+There are two major questions emerging from ML and HPC interaction:  
+\begin{itemize}
+\item How to use the acquired data?
+\item How to acquire the data we want?
+\end{itemize}
+Therefore we have the urge to distinguish different modes and mechanics of how learning is integrated with HPC simulations. In other words, we need to distinguish different interactions of learning and HPC. The three primary modes and mechanisms for integrating learning with HPC simulations are:
+\begin{itemize}
+\item \textbf{Substitution:} A surrogate model is used to substitute an essential element of the original simulation (method). The surrogate model is used to create multi-scale or coarse-grained surrogate modeling, which could either learn the structure or theory of the original simulation. For example: Using a trained Neural Network from the original simulation can reduce the cost significantly compared to running it in the original simulation\cite{b45}.
+\item \textbf{Assimilation:} In this mode, data from simulations, offline external constraints, or real-time experiments are integrated into physics-based models, which are then assimilated into traditional simulations. For example: In weather prediction, we constantly assimilate new, time-dependent, based on observations corrected simulations into the traditional simulation model\cite{b22}.
+\item \textbf{Control and Adaptive Execution}In this mode, the simulation is controlled towards important and interesting parts of the simulation phase space. Sometimes this involves determining the parameters of the next stage (iteration) of simulations based on intermediate data. Sometimes the entire campaign can be adaptively steered towards an objective, which in turn could involve getting better data via active learning based upon an objective function. In other words, we steer the simulation towards the objectives so that we might have more fitting data for the campaign.
+\end{itemize}
+
+\subsection{ML Around HPC Cyber Infrastructure}
+Analysis of ML Around HPC will be divided into three categories: (i) algorithms, benchmarks and methods; (ii) system software and runtime, and (iii) hardware.\\
+\textbf{Algorithms, Benchmarks and Methods}
+\begin{itemize}
+\item Identification of Underlying Projects: Which traditional HPC simulations can be redesigned with ML? And if HPC simulations are going to serve as data sources, is there an opportunity to devise new ML algorithms so we can use those generated data better?
+\item Possible Improvement: Simulations are simply 4D time-series data. However ML doesn't have to be like that. There is space for improvement of better interaction between these two.
+\item Main Problem of a Project: How to understand which learning methods work. why and for which problems? How do we develop benchmarks? Furthermore, how do we develop proxy apps to represent the applications?
+\item Understanding Performance: What are the metrics that represent the performance of machine learning and simulations? How to define those metrics?
+\end{itemize}
+\textbf{System Software and ML-HPC Runtime Systems}
+\begin{itemize}
+\item The interactions of ML and HPC simulations can be intertwined, so it is important to understand the control and coupling between Learning elements(L), and HPC Simulation (S). In many cases, a third general component: experiments or observations (E) may also be needed.
+There are some run-time requirements that have to be fulfilled. For example: switching actions depending on data size; Learning algorithms depending on remaining training time; And the need for scaling, since we work on two (possibly three) components; The concurrency of the whole system. Therefore a run-time system and software have to be accordingly developed.
+\end{itemize}
+\textbf{Hardware and Platform Configuration}
+\begin{itemize}
+\item Role and importance of heterogeneous accelerators: (i) Future generations of accelerators might not work perfectly for simulation. (current GPU accelerators are fine with both ML and simulation) (ii) When should RNN need different accelerators from CNN? (the importance of RNN is increasing, but now many accelerators are for CNN)
+\item Requirements of fast I/O and accordingly, fast and large disks.
+\item Latent optimization methods like fog computing.
+\end{itemize}
+
+\section{Discussion}
+The trajectory of machine learning in High Performance Computing is emerging as multifaceted, with the methodological methods we describe in this article, and depicts a complex landscape that requires rigorous research. The discussion delves into the key opportunities and challenges inherent in the integration of machine learning into High Performance Computing.
+First, let's take a look at the opportunities it offers:
+
+\begin{itemize}
+\item \textbf{Scalability and Efficiency:} Properly applied ML techniques exhibit inherent scalability, allowing large datasets and complex simulations to be processed with improved computational efficiency.
+\item \textbf{Adaptability to Diverse Domains:} The versatility of machine learning gives it wide application across a wide range of scientific disciplines. From climate modeling to materials science, machine learning techniques can adapt to the complexities of various data types and scientific problems and produce effective solutions to them.
+\item \textbf{Predictive Modeling and Optimization:} Machine learning algorithms are an excellent way to create predictive models, allowing optimization of simulations, resource allocation, and decision-making processes. This capability has the potential to revolutionize the way HPC resources are used.
+\item \textbf{Future Aspects:} Future research in HPC will prioritize improving ML algorithms for improved scalability, parallelization and efficiency. Hybrid approaches that integrate physics-based models with machine learning techniques are expected to gain even more importance in interdisciplinary studies. In particular, addressing the inherent uncertainty in ML predictions will be crucial and will require the development of probabilistic models and advanced uncertainty measurement techniques.
+
+The Integration of ML with HPC has also many challenges:
+
+\item \textbf{Computational Overheads and Scalability:} The inherent computational demands of advanced machine learning models present challenges in terms of scalability, especially when dealing with large-scale simulations and large data sets. Future research should also consider computational overheads and optimize for efficient algorithms in HPC architectures.
+\item \textbf{Data Quality and Quantity:} Unfortunately, ML models' reliance on the quality and quantity of training data remains a persistent challenge. Obtaining representative datasets in scientific fields is often difficult and requires innovative strategies for data augmentation, synthesis, and curation.
+\item \textbf{Interpretability and Explainability:} The current era can be summarized as the search for high-level computing capabilities that require unprecedented computing power. ML in hyperscale systems simultaneously poses challenges and opportunities that require the development of algorithms and frameworks optimized for extreme parallelism. Research efforts are focused on addressing scalability, fault tolerance, and energy efficiency in machine learning applications in the context of exascale HPC.
+\item \textbf{Ethical Considerations:} The ethical implications of deploying ML in HPC contexts require meticulous attention. Future research should actively address issues of bias, fairness, and transparency and ensure that machine learning models do not perpetuate or exacerbate existing inequalities in scientific research. In addition, maximum data security should be ensured in the processing of large data that is difficult to control.
+\end{itemize}
+
+
+\section{Conclusion}
+Many different processor architectures have been designed as the consequences of hardware and architectural trends, such as the end of Dennard scaling and Moore scaling. As it becomes more difficult to control the increasing data size, achieving performance gains becomes increasingly important. This situation underlines the need for unsustainable software investment. In other words we can reach the limits of both hardware and methodological performance gains.It seems that this situation may oblige us to use ML driven HPC applications in the future, which paints an optimistic picture for the most difficult problems.
+
+The recent exploration of data-centric innovations as alternatives to traditional computationally intensive approaches highlights a significant paradigm shift in scientific computing. The quest to increase efficiency and performance has led to an increased reliance on data-driven methodologies by leveraging the power of ML in the HPC context. This paper has highlighted important advances in data-centric approaches and underlined their potential as solutions to computationally heavy paradigms. The important mathematical foundations required for the HPC concepts and terminology behind the methods are also explained with various models in this paper.
+
+The use of recent data-driven innovations, including but not limited to machine learning, shows promise in mitigating the challenges associated with traditional computational methods. Integration of these approaches has demonstrated improved scalability, adaptability, and computational efficiency, providing viable alternatives for solving complex scientific problems. Nuanced exploration of data-driven techniques such as neural networks, deep learning, and statistical modeling sheds light on their applicability in various scientific fields.
+
+Moreover, the change towards data-centric methodologies has not only provided computational advantages but also opened avenues for interdisciplinary collaboration. The collaboration between domain-specific knowledge and advanced data-driven approaches has resulted in new insights and methodologies that transcend the limitations of traditional computational paradigms.
+
+
+
+
+
+\begin{thebibliography}{00}
+\bibitem{b1} T. N. Theis and H.-S. P. Wong, "The End of Moore's Law: A New Beginning for Information Technology," in \textit{Computing in Science and Engineering}, vol. 19, no. 2, pp. 41-50, Mar.-Apr. 2017, doi: 10.1109/MCSE.2017.29.
+
+\bibitem{b2} A. Jung, "Machine Learning: The Basics," \textit{ArXiv:1805.05052}, 2018.
+
+\bibitem{b3} A. Fawzi, M. Balog, A. Huang, et al., "Discovering faster matrix multiplication algorithms with reinforcement learning," \textit{Nature}, 610, 47–53 (2022), https://doi.org/10.1038/s41586-022-05172-4.
+
+\bibitem{b4} D. Silver, et al., "A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play," \textit{Science}, 362, 1140–1144 (2018).
+
+\bibitem{b5} V. Strassen, "Gaussian elimination is not optimal," \textit{Numer. Math.}, 13, 354–356 (1969).
+
+\bibitem{b6} C. J. Hillar and L.-H. Lim, "Most tensor problems are NP-hard," \textit{J. ACM}, 60, 1–39 (2013).
+
+\bibitem{b7} A. Vaswani, "Attention is all you need," In \textit{International Conference on Neural Information Processing Systems}, Vol 30, 5998–6008 (Curran Associates, 2017).
+
+\bibitem{b8} J. Ho, N. Kalchbrenner, D. Weissenborn, and T. Salimans, "Axial attention in multidimensional transformers," Preprint at https://arxiv.org/abs/1912.12180 (2019).
+
+\bibitem{b9} Z. Li, N. Kovachki, K. Azizzadenesheli, B. Liu, K. Bhattacharya, A. Stuart, and A. Anandkumar, "Fourier Neural Operator for Parametric Partial Differential Equations," \textit{ArXiv:2010.08895}, 2020.
+
+\bibitem{b10} Lu Lu, Pengzhan Jin, and George Em Karniadakis, "Deeponet: Learning nonlinear operators for identifying differential equations based on the universal approximation theorem of operators," \textit{arXiv:1910.03193}, 2019.
+
+\bibitem{b11} Kaushik Bhattacharya, Nikola B. Kovachki, and Andrew M. Stuart, "Model reduction and neural networks for parametric pde(s)," preprint, 2020.
+
+\bibitem{b12} N. H. Nelsen and A. M. Stuart, "The random feature model for input-output maps between Banach spaces," \textit{arXiv preprint arXiv:2005.10224}, 2020.
+
+\bibitem{b13} Z. Li, N. Kovachki, K. Azizzadenesheli, B. Liu, K. Bhattacharya, A. Stuart, and A. Anandkumar, "Neural operator: Graph kernel network for partial differential equations," \textit{arXiv preprint arXiv:2003.03485}, 2020.
+
+\bibitem{b14} Ravi G. Patel, Nathaniel A. Trask, Mitchell A. Wood, and Eric C. Cyr, "A physics informed operator regression framework for extracting data-driven continuum models," \textit{Computer Methods in Applied Mechanics and Engineering}, 373:113500, 2021.
+
+\bibitem{b15} Kurt Hornik, Maxwell Stinchcombe, Halbert White, et al. "Multilayer feedforward networks are universal approximators." \textit{Neural Networks}, 2(5):359–366, 1989.
+
+\bibitem{b16} Michael Mathieu, Mikael Henaff, and Yann LeCun. "Fast training of convolutional networks through ffts." 2013.
+
+\bibitem{b17} Yuwei Fan, Cindy Orozco Bohorquez, and Lexing Ying. "Bcr-net: A neural network based on the nonstandard wavelet form." \textit{Journal of Computational Physics}, 384:1–15, 2019.
+
+\bibitem{b18} Karthik Kashinath, Philip Marcus, et al. "Enforcing physical constraints in CNNS through differentiable PDE layer." In \textit{ICLR 2020 Workshop on Integration of Deep Neural Models and Differential Equations}, 2020.
+
+\bibitem{b19} Zongyi Li, Nikola Kovachki, Kamyar Azizzadenesheli, Burigede Liu, Kaushik Bhattacharya, Andrew Stuart, and Anima Anandkumar. "Neural operator: Graph kernel network for partial differential equations." \textit{arXiv preprint} arXiv:2003.03485, 2020.
+
+\bibitem{b20} Frank No\'{e}, Simon Olsson, Jonas K\"{o}hler, and Hao Wu. "Boltzmann generators – sampling equilibrium states of Many-Body systems with deep learning." December 4, 2018.
+
+\bibitem{b21} Katsuhiro Endo, Katsufumi Tomobe, and Kenji Yasuoka. "Multi-step time series generator for molecular dynamics." In \textit{Thirty-Second AAAI Conference on Artificial Intelligence}. aaai.org, 2018.
+
+\bibitem{b22} Wolfgang Gentzsch. "Deep learning for fluid flow prediction in the cloud." \url{https://www.linkedin.com/pulse/deep-learning-fluid-flow-prediction-cloud-wolfgang-gentzsch/}, December 2018. Accessed: 2019-3-1.
+
+\bibitem{b23} Jiequn Han, Arnulf Jentzen, and Weinan E. "Solving high-dimensional partial differential equations using deep learning." \textit{Proceedings of the National Academy of Sciences of the United States of America}, 115(34):8505–8510, 21 August 2018.
+
+\bibitem{b24} Justin Sirignano and Konstantinos Spiliopoulos. "DGM: A deep learning algorithm for solving partial differential equations." \textit{Journal of Computational Physics}, 375:1339–1364, 15 December 2018.
+
+\bibitem{b25} Rohit K Tripathy and Ilias Bilionis. "Deep UQ: Learning deep neural network surrogate models for high dimensional uncertainty quantification." \textit{Journal of Computational Physics}, 375:565–588, 15 December 2018.
+
+\bibitem{b26} Maziar Raissi, Paris Perdikaris, and George Em Karniadakis. "Physics informed deep learning (part II): Data-driven discovery of nonlinear partial differential equations." 28 November 2017.
+
+\bibitem{b27} Jrg Behler and Michele Parrinello. "Generalized Neural-Network Representation of High-Dimensional Potential-Energy Surfaces." \textit{Physical Review Letters}, 98(14):146401, April 2007.
+
+\bibitem{b28} Jrg Behler. "First Principles Neural Network Potentials for Reactive Simulations of Large Molecular and Condensed Systems." \textit{Angewandte Chemie International Edition}, 56(42):12828–12840, 2017.
+
+\bibitem{b29} Keith T. Butler, Daniel W. Davies, Hugh Cartwright, Olexandr Isayev, and Aron Walsh. "Machine learning for molecular and materials science." \textit{Nature}, 559(7715):547, July 2018.
+
+\bibitem{b30} J. S. Smith, O. Isayev, and A. E. Roitberg. "ANI-1: an extensible neural network potential with DFT accuracy at force field computational cost." \textit{Chemical Science}, 8(4):3192–3203, 2017.
+
+\bibitem{b31} Justin S Smith, Benjamin T. Nebgen, Roman Zubatyuk, Nicholas Lubbers, Christian Devereux, Kipton Barros, Sergei Tretiak, Olexandr Isayev, and Adrian Roitberg. "Outsmarting Quantum Chemistry Through Transfer Learning." \textit{chemrxiv}, doi: 10.26434/chemrxiv.6744440.v1, July 2018.
+
+\bibitem{b32} Justin S. Smith, Ben Nebgen, Nicholas Lubbers, Olexandr Isayev, and Adrian E. Roitberg. "Less is more: Sampling chemical space with active learning." \textit{The Journal of Chemical Physics}, 148(24):241733, May 2018.
+
+\bibitem{b33} Francis J. Alexander, Shantenu Jha. "Objective driven computational experiment design: An ExaLearn perspective." In Terry Moore, Geoffrey Fox (editors), \textit{Online Resource for Big Data and Extreme-Scale Computing Workshop}, November 2018.
+
+\bibitem{b34} Kevin Yager. "Autonomous experimentation as a paradigm for materials discovery." In Geoffrey Fox, Terry Moore (editors), \textit{Online Resource for Big Data and Extreme-Scale Computing Workshop}, November 2018.
+
+\bibitem{b35} Fang Ren, Logan Ward, Travis Williams, Kevin J Laws, Christopher Wolverton, and Apurva Mehta. "Accelerated discovery of metallic glasses through iteration of machine learning and high-throughput experiments." \textit{Science Advances}, 4(4):eaaq1566, April 2018.
+
+\bibitem{b36} Logan Ward. "Deep learning, HPC, and data for materials design." In Terry Moore, Geoffrey Fox (editors), \textit{Online Resource for Big Data and Extreme-Scale Computing Workshop}, November 2018.
+
+\bibitem{b37} Bill Tang. "New models for integrated inquiry: Fusion energy exemplar." In Geoffrey Fox, Terry Moore (editors), \textit{Online Resource for Big Data and Extreme-Scale Computing Workshop}, November 2018.
+
+\bibitem{b38} Prasanna V Balachandran, Dezhen Xue, James Theiler, John Hogden, and Turab Lookman. "Adaptive strategies for materials design using uncertainties." \textit{Scientific Reports}, 6:19660, 2016.
+
+\bibitem{b39} Jasper Snoek, Hugo Larochelle, and Ryan P. Adams. "Practical Bayesian optimization of machine learning algorithms." In \textit{Advances in Neural Information Processing Systems}, pages 2951–2959, 2012.
+
+\bibitem{b40} Wolfgang Gentzsch. "Deep learning for fluid flow prediction in the cloud." \url{https://www.linkedin.com/pulse/deep-learning-fluid-flow-prediction-cloud-wolfgang-gentzsch/}, 8 December 2018. Accessed: 2019-3-1.
+
+\bibitem{b41} Jonathan Ozik, Nicholson Collier, Randy Heiland, Gary An, and Paul Macklin. "Learning-accelerated Discovery of Immune-Tumour Interactions." \textit{bioRxiv}, page 573972, January 2019.
+
+\bibitem{b42} JCS Kadupitiya, Geoffrey C. Fox, and Vikram Jadhao. "Machine learning for performance enhancement of molecular dynamics simulations." 28 December 2018.
+
+\bibitem{b43} Matthew Spellings and Sharon C Glotzer. "Machine learning for crystal identification and discovery." \textit{AIChE Journal}, American Institute of Chemical Engineers, 64(6):2198–2206, 30 June 2018.
+
+\bibitem{b44} Oliver Beckstein, Geoffrey Fox, Shantenu Jha. "Convergence of data generation and analysis in the biomolecular simulation community." In Terry Moore, Geoffrey Fox (editors), \textit{Online Resource for Big Data and Extreme-Scale Computing Workshop}, November 2018.
+
+\bibitem{b45} Peter M. Kasson and Shantenu Jha. "Adaptive ensemble simulations of biomolecules." \textit{Current Opinion in Structural Biology}, 52:87–94, 2018. \textit{Cryo electron microscopy: the impact of the cryo-EM revolution in biology Biophysical and computational methods - Part A}.
+
+\end{thebibliography}
+
+
+\end{document}
