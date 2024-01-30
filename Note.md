@@ -35,3 +35,10 @@ for every $u\in V$
 * Operators are endomorphic linear mapping.
 * Adjoint operator is the generalization of symmetric matrics and hermitian matrics. Because of the arthmitics differences between the real and complex space, hermitian matrics are __"the symmetric matrics we want in complex space"__.
 * Now we are becoming more greedy in adjoint matrices. Only symmetry coundnt satisfy us. Our attention has drawn by self-adjoint operators, they are the adjoint operators with co 
+
+## Intuition of Lagrange polynomial
+let's say we have a bunch of data points { $(x_i,y_i)$ }. Our goal is to construct a polynomial that describes the data points, by which we mean a sum of a bunch of polynomials { $P$ } and each individual polynomial $P_i$ equals zero when $x=xi$. so we can formulate the question as follows: Imagine we only two data points $(x0,y0),(x1,y1)$, we need to solve: 
+$$y_0 = A_0 (x-x_1)$$ 
+$$y_1 = A_1 (x-x_0) $$
+
+and $A_0$ and $A_1$ here are the coeffients that we have in Lagrange polynomial.
