@@ -1,12 +1,12 @@
 # Chapter 1
-### big 4 activities in SE
+### 1. Big four activities in SE
 * __Software specification__ The functionality of the software and constraints on its
 operation must be defined.
 * __Software development__ The software to meet the specification must be produced.
 * __Software validation__ The software must be validated to ensure that it does what
 the customer wants.
 * __Software evolution__ The software must evolve to meet changing customer needs.
-### 4 issues that affect software
+### 2. Four issues that affect software
 There are no universal software engineering methods or techniques that may be used. However,
 there are four related issues that affect many different types of software:
 * __Heterogeneity__ Increasingly, systems are required to operate as distributed sys-
@@ -31,21 +31,21 @@ information security is maintained.
 * __Scale__ Software has to be developed across a very wide range of scales, from
 very small embedded systems in portable or wearable devices through to
 Internet-scale, cloud-based systems that serve a global community.
-### Specialties about web-based systems
+### 3. Specialties about web-based systems
 * __reuse__: often with framework
 * __impossiable for previously planning__: Web-based systems are always developed and delivered incrementally.
 * __service-oriented software engineering__
 * __Interface__: like HTML5 or AJAX.
 
 # Chapter 2
-### Software process models
+### 1. Software process models
 * __Waterfall model__: One part after another, good for projects where communication and flexibility aren't available.
 * __Increment model__: Pros: fast, flexible, early delivery possible. Cons: The process is not visible. Managers need regular deliverables to measure pro-
 gress. System structure tends to degrade as new increments are added.
 * __Reuse-oriented software engineering__: Trend. good for: Stand-alone application; Collection of objects as a package; Web services with preexisted standards.
-### Process Activities
+### 2. Process Activities
 Specification; Design and Implementation; Validation; Evolution
-### Coping with changes
+### 3. Coping with changes
 Two approaches to future changes.
 * Change anticipation: giving prototype to customers and anticipate the potential changes.
 * Change tolerance: the software itself is designed for easy-to-change.
