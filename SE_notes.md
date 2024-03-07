@@ -49,10 +49,10 @@ Specification; Design and Implementation; Validation; Evolution
 Two approaches to future changes.
 * Change anticipation: giving prototype to customers and anticipate the potential changes.
 * Change tolerance: the software itself is designed for easy-to-change.
-##### Prototyping
+#### Prototyping
 A prototype is an early version of a software system that is used to demonstrate concepts, try out design options, and find out more about the problem and its possible
 solutions.
-##### Incremental delivery 
+#### Incremental delivery 
 In an incremental delivery process, customers define which of the services are most important and which are least important to
 them. A number of delivery increments are then defined, with each increment providing a subset of the system functionality.
   
