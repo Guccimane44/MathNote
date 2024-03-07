@@ -55,5 +55,14 @@ solutions.
 #### Incremental delivery 
 In an incremental delivery process, customers define which of the services are most important and which are least important to
 them. A number of delivery increments are then defined, with each increment providing a subset of the system functionality.
+
+### 4. Process improvement
+Two quite different approaches to process improvement and change are used:
+* The process maturity approach, which has focused on improving process and project management and introducing good software engineering practice into an organization.
+* The agile approach, which has focused on iterative development and the reduction of overheads in the software process.
+
+The process maturity approach is rooted in plan-driven development and usually requires increased “overhead,” in the sense that activities are introduced that are not directly relevant to program development. Agile approaches focus on the code being developed and deliberately minimize formality and documentation.
+
+__Consequently, only large software companies now use this maturity-focused approach to software process improvement.__
   
 
