@@ -18,4 +18,9 @@ genannten Zustandsinformationen jeweils verarbeitet werden.
 
 5. Anweudungsprogramme / Betriebsystem / Hardware
 
-6. 
+6. Aufgaben des Betriebsystems:
+* einfach zu programmieren.
+* Resources management
+* Kontrollinstanz
+
+7. 
