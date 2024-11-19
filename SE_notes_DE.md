@@ -57,4 +57,10 @@ Wasserfallmodell ist geeignet für:
 * Große Softwaresystem
 #### Inkrementelle Entwicklung
 ![alt text](incremental.png)
+#### Integration und Konfiguration
+Drei Arten von Software werden häufig wiederverwendet.
+* Eigenständige Anwendungen, die für die Benutzung in einer bestimmten Umge-bung konfiguriert wurden. Dies sind Allzwecksysteme mit vielen Funktionen, aber sie müssen für den Einsatz in einer speziellen Anwendung angepasst werden.
+* Sammlungen von Objekten, die als eine Komponente oder als ein Paket entwickelt werden, um mit Komponenten-Framworks wie Java Spring integriert zuwerden (Wheeler und White, 2013).
+* Webdienste, die im Hinblick auf Servicestandards entwickelt werden und die fürentfernte Aufrufe über das Internet verfügbar sind.
+
 
