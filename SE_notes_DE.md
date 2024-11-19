@@ -44,3 +44,10 @@ sondern verwenden ausgiebig bestehende Komponenten und Programme. Dieser Wandel 
 * Kompetenz
 * Schutz des geistigen Eigentums
 * Computermissbrauch
+## Softwareprozesse
+#### Drei allgemeine Vorgehensmodelle
+* Wasserfallmodell: Dieses Modell stellt die grundlegenden Prozessabläufe wieSpezifikation, Entwicklung, Validierung und Evolution als eigenständige Phasendes  Prozesses  dar,  wie  zum  Beispiel  Anforderungsspezifikation,  Softwareent-wurf, Implementierung und Tests.
+* Inkrementelle Entwicklung: Dieser Ansatz verknüpft die Aktivitäten der Spezifi-kation, der Entwicklung und der Validierung. Das System wird als eine Folge von Versionen  (Inkremente)  entwickelt, wobei jede Version neue Funktionalität zuder vorherigen hinzufügt.
+* Integration und Konfiguration: Dieses Modell basiert auf der Verfügbarkeit von wiederverwendbaren Komponenten oder Systemen. Der Systementwicklungs-prozess beschäftigt sich mehr damit, diese Komponenten für den Einsatz in einerUmgebung zu konfigurieren und in ein System zu integrieren.
+#### Wasserfallmodell
+
