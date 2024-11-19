@@ -45,7 +45,7 @@ sondern verwenden ausgiebig bestehende Komponenten und Programme. Dieser Wandel 
 * Schutz des geistigen Eigentums
 * Computermissbrauch
 ## Softwareprozesse
-#### Drei allgemeine Vorgehensmodelle
+### Drei allgemeine Vorgehensmodelle
 * Wasserfallmodell: Dieses Modell stellt die grundlegenden Prozessabläufe wieSpezifikation, Entwicklung, Validierung und Evolution als eigenständige Phasendes  Prozesses  dar,  wie  zum  Beispiel  Anforderungsspezifikation,  Softwareent-wurf, Implementierung und Tests.
 * Inkrementelle Entwicklung: Dieser Ansatz verknüpft die Aktivitäten der Spezifi-kation, der Entwicklung und der Validierung. Das System wird als eine Folge von Versionen  (Inkremente)  entwickelt, wobei jede Version neue Funktionalität zuder vorherigen hinzufügt.
 * Integration und Konfiguration: Dieses Modell basiert auf der Verfügbarkeit von wiederverwendbaren Komponenten oder Systemen. Der Systementwicklungs-prozess beschäftigt sich mehr damit, diese Komponenten für den Einsatz in einerUmgebung zu konfigurieren und in ein System zu integrieren.
@@ -60,7 +60,15 @@ Wasserfallmodell ist geeignet für:
 #### Integration und Konfiguration
 Drei Arten von Software werden häufig wiederverwendet.
 * Eigenständige Anwendungen, die für die Benutzung in einer bestimmten Umge-bung konfiguriert wurden. Dies sind Allzwecksysteme mit vielen Funktionen, aber sie müssen für den Einsatz in einer speziellen Anwendung angepasst werden.
-* Sammlungen von Objekten, die als eine Komponente oder als ein Paket entwickelt werden, um mit Komponenten-Framworks wie Java Spring integriert zuwerden (Wheeler und White, 2013).
-* Webdienste, die im Hinblick auf Servicestandards entwickelt werden und die fürentfernte Aufrufe über das Internet verfügbar sind.
-
+* Sammlungen von Objekten, die als eine Komponente oder als ein Paket entwickelt werden, um mit Komponenten-Framworks wie Java Spring integriert zu werden (Wheeler und White, 2013).
+* Webdienste, die im Hinblick auf Servicestandards entwickelt werden und die für entfernte Aufrufe über das Internet verfügbar sind.
+![alt text](wiederverwendungsbasierteEntwicklung.png)
+### Prozessaktivitäten
+Reale Softwareprozesse sind überlappende Abfolgen von technischen, auf Zusammenarbeit basierenden und betriebswirtschaftlichen Aktivitäten mit dem Gesamtzielder Spezifikation, des Entwurfs, der  Implementierung und des Testens eines Soft-waresystems. Heutzutage werden Prozesse in der Regel durch Werkzeuge unterstützt. Das heißt, dass Softwareentwickler eine Vielzahl verschiedener  Softwarewerkzeugeals Hilfe benutzen können, zum Beispiel Anforderungsmanagementsysteme, Editorenzur Entwurfsmodellierung, Programmeditoren, automatische Testwerkzeuge und Debugger. Solche  Werkzeuge unterstützen besonders das Bearbeiten verschiedenerDokumenttypen und die Verwaltung des immensen Umfangs von detaillierten Informationen, die in einem großen Softwareprojekt erzeugt werden.
+Die vier grundlegenden Prozessaktivitäten:
+* Spezification
+* Entwicklung
+* Validierung
+* Evolution
+#### Spezifikation
 
