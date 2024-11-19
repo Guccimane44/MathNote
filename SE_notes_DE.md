@@ -71,4 +71,5 @@ Die vier grundlegenden Prozessaktivitäten:
 * Validierung
 * Evolution
 #### Spezifikation
+![alt text](Anforderunganalysis.png)
 
