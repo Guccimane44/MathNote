@@ -50,4 +50,11 @@ sondern verwenden ausgiebig bestehende Komponenten und Programme. Dieser Wandel 
 * Inkrementelle Entwicklung: Dieser Ansatz verknüpft die Aktivitäten der Spezifi-kation, der Entwicklung und der Validierung. Das System wird als eine Folge von Versionen  (Inkremente)  entwickelt, wobei jede Version neue Funktionalität zuder vorherigen hinzufügt.
 * Integration und Konfiguration: Dieses Modell basiert auf der Verfügbarkeit von wiederverwendbaren Komponenten oder Systemen. Der Systementwicklungs-prozess beschäftigt sich mehr damit, diese Komponenten für den Einsatz in einerUmgebung zu konfigurieren und in ein System zu integrieren.
 #### Wasserfallmodell
+![alt text](waterfall.png)
+Wasserfallmodell ist geeignet für:
+* Eingebettete Systeme
+* Kritische Systeme
+* Große Softwaresystem
+#### Inkrementelle Entwicklung
+![alt text](incremental.png)
 
