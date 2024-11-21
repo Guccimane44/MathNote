@@ -44,7 +44,7 @@ sondern verwenden ausgiebig bestehende Komponenten und Programme. Dieser Wandel 
 * Kompetenz
 * Schutz des geistigen Eigentums
 * Computermissbrauch
-## Softwareprozesse
+## Chapter2 : Softwareprozesse
 ### Drei allgemeine Vorgehensmodelle
 * Wasserfallmodell: Dieses Modell stellt die grundlegenden Prozessabläufe wieSpezifikation, Entwicklung, Validierung und Evolution als eigenständige Phasendes  Prozesses  dar,  wie  zum  Beispiel  Anforderungsspezifikation,  Softwareent-wurf, Implementierung und Tests.
 * Inkrementelle Entwicklung: Dieser Ansatz verknüpft die Aktivitäten der Spezifi-kation, der Entwicklung und der Validierung. Das System wird als eine Folge von Versionen  (Inkremente)  entwickelt, wobei jede Version neue Funktionalität zuder vorherigen hinzufügt.
@@ -72,4 +72,16 @@ Die vier grundlegenden Prozessaktivitäten:
 * Evolution
 #### Spezifikation
 ![alt text](Anforderunganalysis.png)
-
+#### Entwicklung
+![alt text](entwurfprozesses.png)
+#### Validierung
+![alt text](testPhasen.png)
+#### Evolution
+![alt text](weiterentwicklung.png)
+### Prozessverbesserungen
+Die Grade im Prozessreifemodell sind:
+* __Initial__: Die mit dem Prozessgebiet verknüpften Ziele wurden erreicht. Für alle Prozesse wird der Umfang der zu leistenden Arbeit explizit angegeben und denTeammitgliedern mitgeteilt.
+* __Geführt__: Auf dieser Stufe werden die Ziele des Prozessgebiets erreicht und es be-stehen organisationsweite Richtlinien, die festlegen, wann die einzelnen Prozesseeinzusetzen sind. Es muss dokumentierte Projektpläne geben, die die Projektzielefestlegen. Für die gesamte Organisation müssen Ressourcenmanagement- und Pro-zessüberwachungsverfahren gelten.
+* __Definiert__: Diese Stufe konzentriert sich auf Standardisierung und Umsetzung vonProzessen innerhalb des Unternehmens. Für jedes Projekt gibt es einen verwalte-ten Prozess, der aus einem  definierten Bestand organisationsweiter Prozesse an die Projektanforderungen angepasst wurde. Prozess-Assets und -messungen müssen gesammelt und für die spätere Prozessverbesserung genutzt werden.
+* __Quantitativ verwaltet__: Auf dieser Stufe ist das Unternehmen zur Nutzung statisti-scher und anderer quantitativer Methoden zur Steuerung von Teilprozessen ver-pflichtet. Die gesammelten Prozess- und Produktmessungen müssen also bei derProzessverwaltung verwendet werden.
+* __Prozessoptimierung__: Auf der höchsten Stufe muss das Unternehmen die Prozess-und Produktmessungen zur Steuerung der Prozessverbesserung einsetzen. Trendsmüssen analysiert und die Prozesse an veränderte geschäftliche Erfordernisse an-gepasst werden.
