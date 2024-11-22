@@ -85,3 +85,7 @@ Die Grade im Prozessreifemodell sind:
 * __Definiert__: Diese Stufe konzentriert sich auf Standardisierung und Umsetzung vonProzessen innerhalb des Unternehmens. Für jedes Projekt gibt es einen verwalte-ten Prozess, der aus einem  definierten Bestand organisationsweiter Prozesse an die Projektanforderungen angepasst wurde. Prozess-Assets und -messungen müssen gesammelt und für die spätere Prozessverbesserung genutzt werden.
 * __Quantitativ verwaltet__: Auf dieser Stufe ist das Unternehmen zur Nutzung statisti-scher und anderer quantitativer Methoden zur Steuerung von Teilprozessen ver-pflichtet. Die gesammelten Prozess- und Produktmessungen müssen also bei derProzessverwaltung verwendet werden.
 * __Prozessoptimierung__: Auf der höchsten Stufe muss das Unternehmen die Prozess-und Produktmessungen zur Steuerung der Prozessverbesserung einsetzen. Trendsmüssen analysiert und die Prozesse an veränderte geschäftliche Erfordernisse an-gepasst werden.
+
+## Projektplannung
+
+
