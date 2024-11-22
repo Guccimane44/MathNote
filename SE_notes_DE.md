@@ -87,5 +87,6 @@ Die Grade im Prozessreifemodell sind:
 * __Prozessoptimierung__: Auf der höchsten Stufe muss das Unternehmen die Prozess-und Produktmessungen zur Steuerung der Prozessverbesserung einsetzen. Trendsmüssen analysiert und die Prozesse an veränderte geschäftliche Erfordernisse an-gepasst werden.
 
 ## Projektplannung
-
-
+![alt text](plannungspiele.png)
+#### Algorithmische Kostenmodellierung
+![alt text](AlgorithmischeKostenmodellierung.png)
