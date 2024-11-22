@@ -88,9 +88,9 @@ Die Grade im Prozessreifemodell sind:
 
 ## Projektplannung
 * Gantt-Chart
-* ![alt text](gantt.png)
+ ![alt text](gantt.png)
 * Pert-Chart
-* ![alt text](pert.png)
+ ![alt text](pert.png)
   
 ![alt text](plannungspiele.png)
 #### Algorithmische Kostenmodellierung
