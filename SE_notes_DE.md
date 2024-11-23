@@ -95,3 +95,6 @@ Die Grade im Prozessreifemodell sind:
 ![alt text](plannungspiele.png)
 #### Algorithmische Kostenmodellierung
 ![alt text](AlgorithmischeKostenmodellierung.png)
+
+## Agile projectplannung
+ ![alt text](agile.png)
