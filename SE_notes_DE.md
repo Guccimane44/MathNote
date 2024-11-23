@@ -98,3 +98,13 @@ Die Grade im Prozessreifemodell sind:
 
 ## Agile projectplannung
  ![alt text](agile.png)
+#### Scrum Artefakten
+* Product Backlog
+* Sprint Backlog
+* Potentially Shippable Product Increment
+#### Probleme bei Agile
+* Die Formlosigkeit der agilen Entwicklung ist nicht mit dem juristischen Vorgehenbei der Vertragsgestaltung kompatibel, wie es häufig in großen Unternehmen durch-geführt wird
+* Agile Methoden sind am besten für neue Softwareentwicklung geeignet, nicht so sehr für Softwarewartung. Doch der Hauptanteil der Softwarekosten in großenUnternehmen entsteht durch die Wartung ihrer vorhandenen Softwaresysteme.
+* Agile Methoden sind auf kleine, am gleichen Ort untergebrachte Teams ausgelegt, doch ein Großteil der Softwareentwicklung wird heute von weltweit verteilten Teams durchgeführt.
+#### Agile Principle
+![alt text](agilePrinciple.png)
