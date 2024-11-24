@@ -113,6 +113,10 @@ Die Grade im Prozessreifemodell sind:
 * Funktionale Anforderungen: Funktionen die mit dem System selbst relavent sind.
 * Non-funktionale Anforerungen: Funktionen die z.B. mit Zeitbeschränkerungen und Entwicklungsprozess relavant sind.
 
+#### Requirement Engineering
+![alt text](Requirements-Engineering-Prozesses.png)
+
+
 #### Validierung von Anforderungen
 * __Gültigkeitsprüfungen__: Hier wird überprüft, ob die Anforderungen die tatsächlichen Bedürfnisse der Systemnutzer widerspiegeln.
 * __Konsistenzprüfungen__: Anforderungen im Dokument sollten sich nicht widerspre-chen.  Das  heißt,  es  sollte  keine  widersprüchlichen  Beschränkungen  oder  unter-schiedlichen Beschreibungen für dieselbe Systemfunktion geben.
