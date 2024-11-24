@@ -108,3 +108,15 @@ Die Grade im Prozessreifemodell sind:
 * Agile Methoden sind auf kleine, am gleichen Ort untergebrachte Teams ausgelegt, doch ein Großteil der Softwareentwicklung wird heute von weltweit verteilten Teams durchgeführt.
 #### Agile Principle
 ![alt text](agilePrinciple.png)
+
+## Anforderungsanalysis
+* Funktionale Anforderungen: Funktionen die mit dem System selbst relavent sind.
+* Non-funktionale Anforerungen: Funktionen die z.B. mit Zeitbeschränkerungen und Entwicklungsprozess relavant sind.
+
+#### Validierung von Anforderungen
+* __Gültigkeitsprüfungen__: Hier wird überprüft, ob die Anforderungen die tatsächlichen Bedürfnisse der Systemnutzer widerspiegeln.
+* __Konsistenzprüfungen__: Anforderungen im Dokument sollten sich nicht widerspre-chen.  Das  heißt,  es  sollte  keine  widersprüchlichen  Beschränkungen  oder  unter-schiedlichen Beschreibungen für dieselbe Systemfunktion geben.
+* __Vollständigkeitsprüfungen__: Die Gesamtsystemspezifikation sollte Anforderungenenthalten, die alle durch den Systembenutzer erwarteten Funktionen und Einschränkungen definieren.
+* __Realisierbarkeitsprüfungen__: Mithilfe des Wissens über die vorhandenen Technologien sollten die Anforderungen geprüft werden, um sicherzustellen, dass sie innerhalb des vorgesehenen  Budgets umgesetzt werden können. Diese Prüfungensollten auch den Zeitplan für die Systementwicklung berücksichtigen.
+* __Verifizierbarkeitsprüfungen__:  Um die Möglichkeit einer Kontroverse zwischen dem Kunden und dem Auftragnehmer zu verringern, sollten Systemanforderun-gen stets so geschrieben werden,  dass sie nachprüfbar sind.  
+![alt text](anforderungserhebung.png)
