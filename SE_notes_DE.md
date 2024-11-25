@@ -112,6 +112,7 @@ Die Grade im Prozessreifemodell sind:
 ## Anforderungsanalysis
 * Funktionale Anforderungen: Funktionen die mit dem System selbst relavent sind.
 * Non-funktionale Anforerungen: Funktionen die z.B. mit Zeitbeschränkerungen und Entwicklungsprozess relavant sind.
+![alt text](nichtfunktionaleKriterien.png)
 
 #### Requirement Engineering
 ![alt text](Requirements-Engineering-Prozesses.png)
