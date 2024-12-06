@@ -125,3 +125,42 @@ Die Grade im Prozessreifemodell sind:
 * __Realisierbarkeitsprüfungen__: Mithilfe des Wissens über die vorhandenen Technologien sollten die Anforderungen geprüft werden, um sicherzustellen, dass sie innerhalb des vorgesehenen  Budgets umgesetzt werden können. Diese Prüfungensollten auch den Zeitplan für die Systementwicklung berücksichtigen.
 * __Verifizierbarkeitsprüfungen__:  Um die Möglichkeit einer Kontroverse zwischen dem Kunden und dem Auftragnehmer zu verringern, sollten Systemanforderun-gen stets so geschrieben werden,  dass sie nachprüfbar sind.  
 ![alt text](anforderungserhebung.png)
+
+## Chapter 5 SystemModelierung
+#### Kontextmodelle
+![image](https://github.com/user-attachments/assets/0ea5c5ea-d6a1-46b4-9072-569270223073)
+![image](https://github.com/user-attachments/assets/bc2c1d3f-9bfd-45fb-8296-5448343ba3cb)
+UML-Aktivitätenmodell zeigen die Aktivitäten, in einem Prozess sowie den Kontrollfluss von einer Aktivität zur nächsten.  
+#### Interationmodelle
+![image](https://github.com/user-attachments/assets/c41b0ff2-e8c3-4274-b592-6d3a752a71cc)
+![image](https://github.com/user-attachments/assets/97f978c0-2e56-4cad-ad76-9be642ec4cfc)
+#### Strukturellemodelle
+![image](https://github.com/user-attachments/assets/4f2cf264-efd9-4bfb-a7d5-544f5e006f95)
+![image](https://github.com/user-attachments/assets/1e814803-02e2-4bdc-a7c3-4a310412b3a5)
+![image](https://github.com/user-attachments/assets/55fb5e2b-244a-440a-8e74-2d448955099f)
+#### Verhaltensmodelle
+Verhaltensbasierte Modelle sind Modelle des dynamischen Verhaltens eines Systems während der Ausführung. Sie zeigen, was passiert oder was geschehen sollte, wenn das System auf einen Reiz aus seiner Umwelt reagiert. Diese Reize sind entweder Daten oder Ereignisse:
+1. Daten, die vom System verarbeitet werden müssen, werden verfügbar. Die Verfügbarkeit der Daten löst die Verarbeitung aus.
+2. Ein Ereignis findet statt, welches die Systemverarbeitung anstößt. Ereignisse können mit Daten verbunden sein, aber dies ist nicht immer der Fall.
+##### Datenorientierte Modellierung
+![image](https://github.com/user-attachments/assets/557bf4a5-9b60-4919-bd13-f908a42fca17)
+![image](https://github.com/user-attachments/assets/d3960976-bed0-48cd-8af1-d1c5e64a4843)
+##### Ereignisgesteuerte Modellierung
+![image](https://github.com/user-attachments/assets/07120e09-de1c-44d9-ac33-a9157561e9b7)
+![image](https://github.com/user-attachments/assets/6f5272ae-2aef-4b41-b297-f7fb6cf83076)
+##### Modelldriven Modellierung
+Modellgetriebene Entwicklung (Model-Driven  Engineering, MDE) ist ein Ansatz zur Softwareentwicklung, bei dem Modelle statt Programme die wesentlichen Ausgabendes Entwicklungsprozesses sind  (Brambilla, Cabot und Wimmer, 2012). Die Programme, die auf einer Hardware-/Softwareplattform ausgeführt werden, werden dann automatisch aus den Modellen erzeugt. Anhänger von MDE argumentieren, dass diesdie Abstraktionsebene im Software-Engineering anhebt, sodass sich Entwickler nichtmehr länger mit den Details von Programmiersprachen oder den Spezifika der Ausführungsplattformen beschäftigen müssen.Modellgetriebene Entwicklung hat sich aus dem Konzept der modellgetriebenenArchitektur (Model-Driven  Architecture, MDA) herausgebildet, die von der ObjectManagement Group  (OMG) als ein neues Softwareparadigma vorgeschlagen wurde(Mellor, Scott und Weise, 2014). MDA konzentriert sich auf die Entwurfs- und Imple-mentierungsphasen der Softwareentwicklung, wohingegen sich MDE mit allen Aspekten des Software-Engineering-Prozesses beschäftigt. So sind Themen wie modellba-siertes Requirements-Engineering, Softwareprozesse für modellbasierte Entwicklung und modellbasiertes Testen Bestandteile von MDE, aber nicht von MDA. MDA als Ansatz zum Systems-Engineering wurde von einer Reihe großer Unternehmen zur Unterstützung ihrer Entwicklungsprozesse   aufgegriffen. Der folgendeAbschnitt lässt allgemeinere Aspekte von MDE beiseite und konzentriert sich stattdes-sen auf den Einsatz von MDA zur Softwareimplementierung. Allgemeinere modellge-triebene Entwicklung wurde nur langsam aufgenommen und nur ein paar Firmenhaben diesen Ansatz für ihren Softwareentwicklungszyklus eingesetzt. In seinem Blog diskutiert den Haan mögliche  Gründe, warum sich MDE nicht weiter verbreitet hat(den Haan, 2011).
+#### Modelldriven Architektur
+* __Ein rechenunabhängiges Modell__ (Computation  Independent  Model,  CIM):  CIMsmodellieren  die  wichtigen  Abstraktionen  des  Anwendungsbereichs  eines  Sys-tems und werden daher auch Domänenmodelle oder Geschäftsmodelle genannt.
+* __Ein plattformunabhängiges Model__ (Platform Independent Model, PIM): PIMs modellieren die Ausführung des Systems ohne Bezug auf seine Implementierung.Ein PIM wird in der Regel mithilfe von UML-Modellen beschrieben, die die statische Systemstruktur zeigen und wie es auf externe und interne Ereignisse reagiert.
+* __Plattformspezifische Modelle__ (Platform Specific Model, PSM): PSMs sind Trans-formationen des plattformunabhängigen Models. Für jede Anwendungsplattformgibt es ein separates PSM. Im Prinzip könnte es Schichten von PSMs geben, wo-bei  jede  Schicht  einige  plattformspezifische  Einzelheiten  hinzufügt.  So  könntedas PSM der ersten Schicht auf die Middleware zugeschnitten sein, aber daten-bankunabhängig  sein.  Wenn  eine  konkrete  Datenbank  ausgewählt  wurde,  dannkann ein datenbankspezifisches PSM erstellt werden.
+![image](https://github.com/user-attachments/assets/411cbbe1-9539-4109-a57e-cbfa9e406e3c)
+
+
+
+
+
+
+
+
+
